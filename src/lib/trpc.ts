@@ -39,8 +39,8 @@ const botIdMiddleware = t.middleware(async ({ ctx, next }) => {
   return next();
 });
 
-// Protected procedure with BotID check
-const protectedProcedure = t.procedure.use(botIdMiddleware);
+// Protected procedure with BotID check - temporarily disabled until BotID config is working
+const protectedProcedure = t.procedure; // .use(botIdMiddleware);
 
 export const appRouter = t.router({
   greeting: protectedProcedure

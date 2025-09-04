@@ -17,10 +17,6 @@ const protectedRoutes = [
     path: '/api/trpc',
     method: 'POST',
   },
-  {
-    path: '/api/trpc',
-    method: 'GET',
-  },
 ];
 
 export default function RootLayout({
