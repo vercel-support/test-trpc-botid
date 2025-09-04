@@ -5,15 +5,40 @@ export async function register() {
   initBotId({
     protect: [
       {
-        path: '/api/trpc/greeting',
+        // Protect base tRPC endpoint
+        path: '/api/trpc',
+        method: 'POST',
+        advancedOptions: {
+          checkLevel: 'deepAnalysis',
+        },
+      },
+      {
+        // Protect GET requests for direct API calls
+        path: '/api/trpc',
         method: 'GET',
         advancedOptions: {
           checkLevel: 'deepAnalysis',
         },
       },
       {
+        // Protect batched tRPC requests - specific combination from error
+        path: '/api/trpc/greeting,getCounter',
+        method: 'POST',
+        advancedOptions: {
+          checkLevel: 'deepAnalysis',
+        },
+      },
+      {
+        // Protect individual procedures that might be called separately
+        path: '/api/trpc/greeting',
+        method: 'POST',
+        advancedOptions: {
+          checkLevel: 'deepAnalysis',
+        },
+      },
+      {
         path: '/api/trpc/getCounter',
-        method: 'GET',
+        method: 'POST',
         advancedOptions: {
           checkLevel: 'deepAnalysis',
         },
@@ -26,15 +51,8 @@ export async function register() {
         },
       },
       {
-        // Protect all tRPC endpoints with wildcard
-        path: '/api/trpc/*',
-        method: 'GET',
-        advancedOptions: {
-          checkLevel: 'deepAnalysis',
-        },
-      },
-      {
-        path: '/api/trpc/*',
+        // For your unitracker-payload project
+        path: '/api/trpc/botid.institution',
         method: 'POST',
         advancedOptions: {
           checkLevel: 'deepAnalysis',

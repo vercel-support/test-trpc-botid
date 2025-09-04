@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import { withBotId } from 'botid/next/config';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Configuration options
 };
 
 export default withBotId(nextConfig);
