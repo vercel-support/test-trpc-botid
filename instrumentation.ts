@@ -9,28 +9,28 @@ export async function register() {
         path: '/api/trpc/greeting',
         method: 'POST',
         advancedOptions: {
-          checkLevel: 'basic',
+          checkLevel: 'deepAnalysis',
         },
       },
       {
         path: '/api/trpc/getCounter',
         method: 'POST',
         advancedOptions: {
-          checkLevel: 'basic',
+          checkLevel: 'deepAnalysis',
         },
       },
       {
         path: '/api/trpc/incrementCounter',
         method: 'POST',
         advancedOptions: {
-          checkLevel: 'basic',
+          checkLevel: 'deepAnalysis',
         },
       },
       {
         path: '/api/trpc/botid.institution',
         method: 'POST',
         advancedOptions: {
-          checkLevel: 'basic',
+          checkLevel: 'deepAnalysis',
         },
       },
       {
@@ -38,7 +38,7 @@ export async function register() {
         path: '/api/trpc/greeting,getCounter',
         method: 'POST',
         advancedOptions: {
-          checkLevel: 'basic',
+          checkLevel: 'deepAnalysis',
         },
       },
     ],

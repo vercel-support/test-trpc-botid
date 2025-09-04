@@ -21,12 +21,11 @@ const botIdMiddleware = t.middleware(async ({ ctx, next }) => {
   // BotID automatically detects request context from the server environment
   const verification = await checkBotId({
     advancedOptions: {
-      checkLevel: 'basic',
+      checkLevel: 'deepAnalysis',
     },
     developmentOptions: {
       // Allow development bypass to prevent false positives during development
-      isDevelopment: true, // Force development mode for now
-      bypass: 'HUMAN', // Explicitly bypass as human for testing
+      isDevelopment: process.env.NODE_ENV !== 'production',
     },
   });
   

@@ -19,23 +19,38 @@ export function BotIdInit() {
             // Individual tRPC procedure endpoints
             path: '/api/trpc/greeting',
             method: 'POST',
+            advancedOptions: {
+              checkLevel: 'deepAnalysis',
+            },
           },
           {
             path: '/api/trpc/getCounter',
             method: 'POST',
+            advancedOptions: {
+              checkLevel: 'deepAnalysis',
+            },
           },
           {
             path: '/api/trpc/incrementCounter',
             method: 'POST',
+            advancedOptions: {
+              checkLevel: 'deepAnalysis',
+            },
           },
           {
             path: '/api/trpc/botid.institution',
             method: 'POST',
+            advancedOptions: {
+              checkLevel: 'deepAnalysis',
+            },
           },
           {
             // Batched request format that was causing errors
             path: '/api/trpc/greeting,getCounter',
             method: 'POST',
+            advancedOptions: {
+              checkLevel: 'deepAnalysis',
+            },
           },
         ],
       });

@@ -13,23 +13,38 @@ const protectedRoutes = [
     // Individual tRPC procedure endpoints
     path: '/api/trpc/greeting',
     method: 'POST',
+    advancedOptions: {
+      checkLevel: 'deepAnalysis' as const,
+    },
   },
   {
     path: '/api/trpc/getCounter',
     method: 'POST',
+    advancedOptions: {
+      checkLevel: 'deepAnalysis' as const,
+    },
   },
   {
     path: '/api/trpc/incrementCounter',
     method: 'POST',
+    advancedOptions: {
+      checkLevel: 'deepAnalysis' as const,
+    },
   },
   {
     path: '/api/trpc/botid.institution',
     method: 'POST',
+    advancedOptions: {
+      checkLevel: 'deepAnalysis' as const,
+    },
   },
   {
     // Also protect the batched request format that was causing errors
     path: '/api/trpc/greeting,getCounter',
     method: 'POST',
+    advancedOptions: {
+      checkLevel: 'deepAnalysis' as const,
+    },
   },
 ];
 
