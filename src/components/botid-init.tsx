@@ -16,13 +16,25 @@ export function BotIdInit() {
       initBotId({
         protect: [
           {
-            // Exact match for the batched request that's causing the error
-            path: '/api/trpc/greeting,getCounter',
+            // Individual tRPC procedure endpoints
+            path: '/api/trpc/greeting',
             method: 'POST',
           },
           {
-            // Base tRPC endpoint
-            path: '/api/trpc',
+            path: '/api/trpc/getCounter',
+            method: 'POST',
+          },
+          {
+            path: '/api/trpc/incrementCounter',
+            method: 'POST',
+          },
+          {
+            path: '/api/trpc/botid.institution',
+            method: 'POST',
+          },
+          {
+            // Batched request format that was causing errors
+            path: '/api/trpc/greeting,getCounter',
             method: 'POST',
           },
         ],
