@@ -16,7 +16,7 @@ const t = initTRPC.context<Context>().create();
 
 let counter = 0;
 
-// Middleware to check for bots with deepAnalysis
+// Middleware to check for bots - with development bypass
 const botIdMiddleware = t.middleware(async ({ ctx, next }) => {
   // BotID automatically detects request context from the server environment
   const verification = await checkBotId({
@@ -25,11 +25,15 @@ const botIdMiddleware = t.middleware(async ({ ctx, next }) => {
     },
     developmentOptions: {
       // Allow development bypass to prevent false positives during development
-      isDevelopment: process.env.NODE_ENV !== 'production',
+      isDevelopment: true, // Force development mode for now
+      bypass: 'HUMAN', // Explicitly bypass as human for testing
     },
   });
   
-  if (verification.isBot) {
+  // Log for debugging
+  console.log('BotID verification:', verification);
+  
+  if (verification.isBot && !verification.bypassed) {
     throw new TRPCError({
       code: 'FORBIDDEN',
       message: 'Bot detected. Access denied.',
@@ -39,8 +43,8 @@ const botIdMiddleware = t.middleware(async ({ ctx, next }) => {
   return next();
 });
 
-// Protected procedure with BotID check - temporarily disabled until BotID config is working
-const protectedProcedure = t.procedure; // .use(botIdMiddleware);
+// Protected procedure with BotID check - testing with development bypass
+const protectedProcedure = t.procedure.use(botIdMiddleware);
 
 export const appRouter = t.router({
   greeting: protectedProcedure
